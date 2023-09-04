@@ -29,6 +29,14 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
+        val workRequest = OneTimeWorkRequestBuilder<DummyWorkManager>().build()
+        WorkManager.getInstance(this)
+            .enqueueUniqueWork(
+                "dummyWork",
+                ExistingWorkPolicy.KEEP,
+                workRequest,
+            )
     }
 }
 
